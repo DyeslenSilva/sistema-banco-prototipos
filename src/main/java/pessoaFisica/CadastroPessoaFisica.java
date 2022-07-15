@@ -14,15 +14,27 @@ public class CadastroPessoaFisica {
 	private JLabel lbNome, lbNomeDoPai, lbNomeDaMae;
 	private JLabel lblCEPTitle;
 	private JLabel lbCEP;
+	private JLabel lbEndereco, lbN, lbMunicipio, lbBairro, lbEstado;
 	private JTextField txNomeDoPai, TxNomeDaMae;
 	private JTextField txRG, txCPF;
 	private JTextField txNomeCliente;
 	private JTextField txCEP;
+	private JTextField txEndereco,txN, txMunicipio, txBairro, txEstado;
 	private JButton btBuscar;
 	private JButton btBuscaCEP;
 	
 	public void setCadastroPessoaFisica() {
-		cadastroPessoaFisica.setSize(600, 600);
+		cadastroPessoaFisica.setSize(750, 750);
+		getContentPane();
+		getContentPane2();
+		getContentPane3();
+		
+		cadastroPessoaFisica.setLayout(null);
+		cadastroPessoaFisica.setVisible(true);
+	}
+	
+	
+	private void getContentPane(){
 		cadastroPessoaFisica.getContentPane().add(getLbCPF());
 		cadastroPessoaFisica.getContentPane().add(getLbRG());
 		cadastroPessoaFisica.getContentPane().add(getTxRG());
@@ -30,7 +42,9 @@ public class CadastroPessoaFisica {
 		cadastroPessoaFisica.getContentPane().add(getBtBuscar());
 		cadastroPessoaFisica.getContentPane().add(getLbDadosPessoais());
 		cadastroPessoaFisica.getContentPane().add(getLbNome());
-		//cadastroPessoaFisica.getContentPane().add(getTxNome());
+	}
+	
+	private void getContentPane2() {
 		cadastroPessoaFisica.getContentPane().add(getTxNomeCliente());
 		cadastroPessoaFisica.getContentPane().add(getLbNomeDaMae());
 		cadastroPessoaFisica.getContentPane().add(getTxNomeDaMae());
@@ -40,10 +54,17 @@ public class CadastroPessoaFisica {
 		cadastroPessoaFisica.getContentPane().add(getLbCEP());
 		cadastroPessoaFisica.getContentPane().add(getTxCEP());
 		cadastroPessoaFisica.getContentPane().add(getBtBuscaCEP());
-		cadastroPessoaFisica.setLayout(null);
-		cadastroPessoaFisica.setVisible(true);
+		cadastroPessoaFisica.getContentPane().add(getLbEndereco());
+		cadastroPessoaFisica.getContentPane().add(getTxEndereco());
 	}
 	
+	private void getContentPane3() {
+		cadastroPessoaFisica.getContentPane().add(getLbN());
+		cadastroPessoaFisica.getContentPane().add(getTxN());
+		cadastroPessoaFisica.getContentPane().add(getLbMunicipio());
+		cadastroPessoaFisica.getContentPane().add(getTxMunicipio());
+	}
+
 	
 	public JLabel getLbRG() {
 		lbRG = new JLabel("RG");
@@ -151,6 +172,43 @@ public class CadastroPessoaFisica {
 		btBuscaCEP.setBounds(190, 240, 100, 20);
 		return btBuscaCEP;
 	}
+	
+	public JLabel getLbEndereco() {
+		lbEndereco = new JLabel("Endereco");
+		lbEndereco.setBounds(10, 280, 100, 20);
+		return lbEndereco;
+	}
+	
+	public JTextField getTxEndereco() {
+		txEndereco = new JTextField();
+		txEndereco.setBounds(70, 280, 100, 20);
+		return txEndereco;
+	}
+	
+	public JLabel getLbN() {
+		lbN = new JLabel("N");
+		lbN.setBounds(190, 280, 100, 20);
+		return lbN;
+	}
+	
+	public JTextField getTxN() {
+		txN = new JTextField();
+		txN.setBounds(220, 280, 50, 20);
+		return txN;
+	}
+	
+	public JLabel getLbMunicipio() {
+		lbMunicipio = new JLabel("Municipio");
+		lbMunicipio.setBounds(300, 280, 130, 20);
+		return lbMunicipio;
+	}
+	
+	public JTextField getTxMunicipio() {
+		txMunicipio = new JTextField();
+		txMunicipio.setBounds(380, 280, 100, 20);
+		return txMunicipio;
+	}
+	
 	
 	public static void main(String[] args) {
 		new CadastroPessoaFisica().setCadastroPessoaFisica();
