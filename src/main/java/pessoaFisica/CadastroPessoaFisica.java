@@ -1,11 +1,15 @@
 package pessoaFisica;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class CadastroPessoaFisica {
@@ -17,17 +21,29 @@ public class CadastroPessoaFisica {
 	private JLabel lbCEP, lbResidenciaFixa;
 	private JLabel lbEndereco, lbN, lbMunicipio, lbBairro, lbEstado;
 	private JLabel lbContatos, lbTelefones;
-	private JLabel lbTelFixo, lbCel;
+	private JLabel lbProfissaoTitle, lbProfissao;
+	private JLabel lbTelFixo, lbCel, lbEmail;
+	private JLabel lbRemuneracao;
+	private JLabel lbRendaTitle,lbStatusMatTitle;
+	private JLabel lbRenda;
 	private JTextField txNomeDoPai, TxNomeDaMae;
 	private JTextField txRG, txCPF;
 	private JTextField txNomeCliente;
 	private JTextField txCEP;
 	private JTextField txEndereco,txN, txMunicipio, txBairro, txEstado;
-	private JTextField txTelFixo, txCel;
+	private JTextField txTelFixo, txCel, txEmail;
+	private JTextField txRemuneracao;
+	private JComboBox<Profissoes> profissoes;
+	private JComboBox<Renda> renda;
 	private JCheckBox chbSim;
 	private JCheckBox chbNao2;
+	private JCheckBox chbWhatsapp;
+	private JRadioButton rbSolteiro, rbCasado, rbUniaoEstavel;
+	private JRadioButton rbDivorciado, rbViuvo;
 	private JButton btBuscar;
 	private JButton btBuscaCEP;
+	
+	private Profissoes prof = new Profissoes();
 	
 	public void setCadastroPessoaFisica() {
 		cadastroPessoaFisica.setSize(850, 750);
@@ -35,12 +51,11 @@ public class CadastroPessoaFisica {
 		getContentPane2();
 		getContentPane3();
 		getContentPane4();
-		
+		getContentPane5();
+		getContentPane6();
 		cadastroPessoaFisica.setLayout(null);
 		cadastroPessoaFisica.setVisible(true);
 	}
-	
-	
 
 
 	private void getContentPane(){
@@ -82,11 +97,37 @@ public class CadastroPessoaFisica {
 	private void getContentPane4() {
 		cadastroPessoaFisica.getContentPane().add(getLbResidenciaFixa());
 		cadastroPessoaFisica.getContentPane().add(getChbSim());
-		//.getContentPane().add(getChbNao());
 		cadastroPessoaFisica.getContentPane().add(getChbNao2());
 		cadastroPessoaFisica.getContentPane().add(getLbContatos());
 		cadastroPessoaFisica.getContentPane().add(getLbTelefones());
+		cadastroPessoaFisica.getContentPane().add(getLbTelFixo());
+		cadastroPessoaFisica.getContentPane().add(getTxTelFixo());
+		cadastroPessoaFisica.getContentPane().add(getLbCel());
+		cadastroPessoaFisica.getContentPane().add(getTxCel());
 	}
+
+	
+
+	private void getContentPane5() {
+		cadastroPessoaFisica.getContentPane().add(getChbWhatsapp());
+		cadastroPessoaFisica.getContentPane().add(getLbEmail());
+		cadastroPessoaFisica.getContentPane().add(getTxEmail());
+		cadastroPessoaFisica.getContentPane().add(getLbProfissaoTitle());
+		cadastroPessoaFisica.getContentPane().add(getLbProfissao());
+		cadastroPessoaFisica.getContentPane().add(getProfissoes());
+		cadastroPessoaFisica.getContentPane().add(getLbRemuneracao());
+		cadastroPessoaFisica.getContentPane().add(getTxRemuneracao());
+		cadastroPessoaFisica.getContentPane().add(getLbRendaTitle());
+	}
+
+	
+	private void getContentPane6() {
+		cadastroPessoaFisica.getContentPane().add(getLbRenda());
+		cadastroPessoaFisica.getContentPane().add(getRenda());
+		cadastroPessoaFisica.getContentPane().add(getLbStatusMatTitle());
+		cadastroPessoaFisica.getContentPane().add(getRbSolteiro());
+	}
+
 
 	
 	public JLabel getLbRG() {
@@ -296,11 +337,113 @@ public class CadastroPessoaFisica {
 	}
 	
 	public JLabel getLbTelFixo() {
+		lbTelFixo = new JLabel("Fixo");
+		lbTelFixo.setBounds(70, 415, 110, 20);
 		return lbTelFixo;
 	}
 	
 	public JTextField getTxTelFixo() {
+		txTelFixo = new JTextField();
+		txTelFixo.setBounds(100, 415, 100, 20);
 		return txTelFixo;
+	}
+	
+	public JLabel getLbCel() {
+		lbCel = new JLabel("Celular");
+		lbCel.setBounds(210, 415, 100, 20);
+		return lbCel;
+	}
+	
+	public JTextField getTxCel() {
+		txCel = new JTextField();
+		txCel.setBounds(270, 415, 100, 20);
+		return txCel;
+	}
+	
+	public JCheckBox getChbWhatsapp() {
+		chbWhatsapp = new JCheckBox("Whatsapp");
+		chbWhatsapp.setBounds(370, 415, 100, 20);
+		return chbWhatsapp;
+	}
+	
+	
+	public JLabel getLbStatusMatTitle() {
+		String statusMatrimonial = "status matrimonial".toUpperCase();
+		lbStatusMatTitle = new JLabel(statusMatrimonial);
+		lbStatusMatTitle.setBounds(550,460,150,20);
+		return lbStatusMatTitle;
+	}
+	
+	public JRadioButton getRbSolteiro() {
+		rbSolteiro = new JRadioButton("Solteiro");
+		rbSolteiro.setBounds(550, 490, 150, 20);
+		return rbSolteiro;
+	}
+	
+	public JRadioButton getRbCasado() {
+		return rbCasado;
+	}
+	
+	public JLabel getLbEmail() {
+		lbEmail = new JLabel("Email");
+		lbEmail.setBounds(70, 460, 100, 20);
+		return lbEmail;
+	}
+	
+	public JTextField getTxEmail() {
+		txEmail = new JTextField();
+		txEmail.setBounds(110, 460, 100, 20);
+		return txEmail;
+	}
+	
+	public JLabel getLbProfissaoTitle() {
+		String profissao = "profissao".toUpperCase();
+		lbProfissaoTitle = new JLabel(profissao);
+		lbProfissaoTitle.setBounds(10, 490, 100, 20);
+		return lbProfissaoTitle;
+	}
+	
+	public JLabel getLbProfissao() {
+		lbProfissao = new JLabel("Profissao Atual");
+		lbProfissao.setBounds(10, 520, 100, 20);
+		return lbProfissao;
+	}
+	
+	public JComboBox<Profissoes> getProfissoes() {
+		profissoes = new JComboBox<Profissoes>();
+		profissoes.setBounds(110, 520, 130, 20);
+		return profissoes;
+	}
+	
+	public JLabel getLbRemuneracao() {
+		lbRemuneracao = new JLabel("Remuneracao");
+		lbRemuneracao.setBounds(250, 520, 100, 20);
+		return lbRemuneracao;
+	}
+	
+	public JTextField getTxRemuneracao() {
+		txRemuneracao = new JTextField();
+		txRemuneracao.setBounds(330, 520, 100, 20);
+		return txRemuneracao;
+	}
+	
+	public JLabel getLbRendaTitle() {
+		String renda = "renda".toUpperCase();
+		lbRendaTitle = new JLabel(renda);
+		lbRendaTitle.setBounds(10, 560, 100, 20);
+		return lbRendaTitle;
+	}
+	
+	public JLabel getLbRenda() {
+		lbRenda = new JLabel("Renda");
+		lbRenda.setBounds(10,580, 100,20);
+		return lbRenda;
+	}
+	
+	public JComboBox<Renda> getRenda() {
+		renda = new JComboBox<Renda>();
+		renda.setBounds(50, 580, 100, 20);
+		return renda;
 	}
 	
 	public static void main(String[] args) {
