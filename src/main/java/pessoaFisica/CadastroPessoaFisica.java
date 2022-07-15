@@ -42,8 +42,9 @@ public class CadastroPessoaFisica {
 	private JRadioButton rbDivorciado, rbViuvo;
 	private JButton btBuscar;
 	private JButton btBuscaCEP;
+	private JButton btCadastrarCliente;
 	
-	private Profissoes prof = new Profissoes();
+	// Profissoes prof = new Profissoes();
 	
 	public void setCadastroPessoaFisica() {
 		cadastroPessoaFisica.setSize(850, 750);
@@ -126,6 +127,11 @@ public class CadastroPessoaFisica {
 		cadastroPessoaFisica.getContentPane().add(getRenda());
 		cadastroPessoaFisica.getContentPane().add(getLbStatusMatTitle());
 		cadastroPessoaFisica.getContentPane().add(getRbSolteiro());
+		cadastroPessoaFisica.getContentPane().add(getRbCasado());
+		cadastroPessoaFisica.getContentPane().add(getRbUniaoEstavel());
+		cadastroPessoaFisica.getContentPane().add(getRbDivorciado());
+		cadastroPessoaFisica.getContentPane().add(getRbViuvo());
+		cadastroPessoaFisica.getContentPane().add(getBtCadastrarCliente());
 	}
 
 
@@ -234,6 +240,7 @@ public class CadastroPessoaFisica {
 	public JButton getBtBuscaCEP() {
 		btBuscaCEP = new JButton("Busca CEP");
 		btBuscaCEP.setBounds(190, 240, 100, 20);
+		btBuscaCEP.setBackground(Color.blue);
 		return btBuscaCEP;
 	}
 	
@@ -381,7 +388,27 @@ public class CadastroPessoaFisica {
 	}
 	
 	public JRadioButton getRbCasado() {
+		rbCasado = new JRadioButton("Casado");
+		rbCasado.setBounds(550,510,150,20);
 		return rbCasado;
+	}
+	
+	public JRadioButton getRbUniaoEstavel() {
+		rbUniaoEstavel = new JRadioButton("Uniao Estavel");
+		rbUniaoEstavel.setBounds(550, 530, 150, 20);
+		return rbUniaoEstavel;
+	}
+	
+	public JRadioButton getRbDivorciado() {
+		rbDivorciado = new JRadioButton("Divorciado");
+		rbDivorciado.setBounds(550, 550, 150, 20);
+		return rbDivorciado;
+	}
+	
+	public JRadioButton getRbViuvo() {
+		rbViuvo = new JRadioButton("Viuvo");
+		rbViuvo.setBounds(550, 570, 150, 20);
+		return rbViuvo;
 	}
 	
 	public JLabel getLbEmail() {
@@ -436,14 +463,20 @@ public class CadastroPessoaFisica {
 	
 	public JLabel getLbRenda() {
 		lbRenda = new JLabel("Renda");
-		lbRenda.setBounds(10,580, 100,20);
+		lbRenda.setBounds(10,590, 100,20);
 		return lbRenda;
 	}
 	
 	public JComboBox<Renda> getRenda() {
 		renda = new JComboBox<Renda>();
-		renda.setBounds(50, 580, 100, 20);
+		renda.setBounds(50, 590, 100, 20);
 		return renda;
+	}
+	
+	public JButton getBtCadastrarCliente() {
+		btCadastrarCliente = new JButton("Cadastrar Cliente");
+		btCadastrarCliente.setBounds(450, 630, 150, 20);
+		return btCadastrarCliente;
 	}
 	
 	public static void main(String[] args) {
