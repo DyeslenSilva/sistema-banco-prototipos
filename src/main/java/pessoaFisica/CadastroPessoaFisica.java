@@ -3,6 +3,7 @@ package pessoaFisica;
 import java.awt.Color;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -13,27 +14,35 @@ public class CadastroPessoaFisica {
 	private JLabel lbCPF, lbRG;
 	private JLabel lbNome, lbNomeDoPai, lbNomeDaMae;
 	private JLabel lblCEPTitle;
-	private JLabel lbCEP;
+	private JLabel lbCEP, lbResidenciaFixa;
 	private JLabel lbEndereco, lbN, lbMunicipio, lbBairro, lbEstado;
+	private JLabel lbContatos, lbTelefones;
+	private JLabel lbTelFixo, lbCel;
 	private JTextField txNomeDoPai, TxNomeDaMae;
 	private JTextField txRG, txCPF;
 	private JTextField txNomeCliente;
 	private JTextField txCEP;
 	private JTextField txEndereco,txN, txMunicipio, txBairro, txEstado;
+	private JTextField txTelFixo, txCel;
+	private JCheckBox chbSim;
+	private JCheckBox chbNao2;
 	private JButton btBuscar;
 	private JButton btBuscaCEP;
 	
 	public void setCadastroPessoaFisica() {
-		cadastroPessoaFisica.setSize(750, 750);
+		cadastroPessoaFisica.setSize(850, 750);
 		getContentPane();
 		getContentPane2();
 		getContentPane3();
+		getContentPane4();
 		
 		cadastroPessoaFisica.setLayout(null);
 		cadastroPessoaFisica.setVisible(true);
 	}
 	
 	
+
+
 	private void getContentPane(){
 		cadastroPessoaFisica.getContentPane().add(getLbCPF());
 		cadastroPessoaFisica.getContentPane().add(getLbRG());
@@ -63,6 +72,20 @@ public class CadastroPessoaFisica {
 		cadastroPessoaFisica.getContentPane().add(getTxN());
 		cadastroPessoaFisica.getContentPane().add(getLbMunicipio());
 		cadastroPessoaFisica.getContentPane().add(getTxMunicipio());
+		cadastroPessoaFisica.getContentPane().add(getLbBairro());
+		cadastroPessoaFisica.getContentPane().add(getTxBairro());
+		cadastroPessoaFisica.getContentPane().add(getLbEstado());
+		cadastroPessoaFisica.getContentPane().add(getTxEstado());
+	}
+
+	
+	private void getContentPane4() {
+		cadastroPessoaFisica.getContentPane().add(getLbResidenciaFixa());
+		cadastroPessoaFisica.getContentPane().add(getChbSim());
+		//.getContentPane().add(getChbNao());
+		cadastroPessoaFisica.getContentPane().add(getChbNao2());
+		cadastroPessoaFisica.getContentPane().add(getLbContatos());
+		cadastroPessoaFisica.getContentPane().add(getLbTelefones());
 	}
 
 	
@@ -103,7 +126,7 @@ public class CadastroPessoaFisica {
 	public JLabel getLbDadosPessoais() {
 		String dadosPessoais = "dados pessoais".toUpperCase();
 		lbDadosPessoais = new JLabel(dadosPessoais);
-		lbDadosPessoais.setBounds(90, 90, 170, 30);
+		lbDadosPessoais.setBounds(10, 90, 170, 30);
 		return lbDadosPessoais;
 	}
 	
@@ -151,7 +174,7 @@ public class CadastroPessoaFisica {
 	
 	public JLabel getLblCEPTitle() {
 		lblCEPTitle = new JLabel("CEP");
-		lblCEPTitle.setBounds(50, 200, 70, 20);
+		lblCEPTitle.setBounds(10, 200, 70, 20);
 		return lblCEPTitle;
 	}
 	
@@ -209,6 +232,76 @@ public class CadastroPessoaFisica {
 		return txMunicipio;
 	}
 	
+	
+	public JLabel getLbBairro() {
+		lbBairro = new JLabel("Bairro");
+		lbBairro.setBounds(490, 280, 100, 20);
+		return lbBairro;
+	}
+	
+	public JTextField getTxBairro() {
+		txBairro = new JTextField();
+		txBairro.setBounds(530, 280, 100, 20);
+		return txBairro;
+	}
+	
+	public JLabel getLbEstado() {
+		lbEstado = new JLabel("Estado");
+		lbEstado.setBounds(650, 280, 100, 20);
+		return lbEstado;
+	}
+	
+	public JTextField getTxEstado() {
+		txEstado = new JTextField();
+		txEstado.setBounds(700,280,100,20);
+		return txEstado;
+	}
+	
+	public JLabel getLbResidenciaFixa() {
+		lbResidenciaFixa = new JLabel("Residencia Fixa");
+		lbResidenciaFixa.setBounds(10, 320, 100, 20);
+		return lbResidenciaFixa;
+	}
+	
+	public JCheckBox getChbSim() {
+		chbSim = new JCheckBox("Sim");
+		chbSim.setBounds(100, 320, 60,20);
+		return chbSim;
+	}
+	
+//	public JCheckBox getChbNao() {
+//		chbNao = new JCheckBox("Nao");
+//		chbNao.setBounds(130, 320, 100, 20);
+//		return chbNao;
+//	}
+//	
+	
+	public JCheckBox getChbNao2() {
+		chbNao2 = new JCheckBox("Não");
+		chbNao2.setBounds(160, 320, 100, 20);
+		return chbNao2;
+	}
+	
+	public JLabel getLbContatos() {
+		String contatos = "contatos".toUpperCase();
+		lbContatos = new JLabel(contatos);
+		lbContatos.setBounds(10, 350, 150, 20);
+		return lbContatos;
+	}
+
+	public JLabel getLbTelefones() {
+		lbTelefones = new JLabel("Telefones:");
+		lbTelefones.setBounds(40, 385, 100, 20);
+		return lbTelefones;
+	}
+	
+	public JLabel getLbTelFixo() {
+		return lbTelFixo;
+	}
+	
+	public JTextField getTxTelFixo() {
+		return txTelFixo;
+	}
 	
 	public static void main(String[] args) {
 		new CadastroPessoaFisica().setCadastroPessoaFisica();
