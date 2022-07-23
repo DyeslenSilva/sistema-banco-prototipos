@@ -2,6 +2,8 @@ package pessoaFisica;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,6 +24,7 @@ public class ConsultaClientePorRG extends JFrame{
 	//private JScrollPane scrollPane;
 	//private DefaultTableModel tableModel;
 	private JPanel consultaClienteRG;
+	private JButton janelaConsulta;
 	
 	
 	private  Object[] colunas = new Object[]{"RG","CPF","Nome","Nome da Mae","Nome do Pai","CEP","Endereco",
@@ -35,7 +38,7 @@ public class ConsultaClientePorRG extends JFrame{
 	};
 	
 	public ConsultaClientePorRG() {
-		String rg = JOptionPane.showInputDialog("Informe seu RG");
+		//consultaRG();
 		setLayout(new FlowLayout());
 		setSize(1900, 600);
 		setLocationRelativeTo(null);
@@ -43,7 +46,7 @@ public class ConsultaClientePorRG extends JFrame{
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//getContentPane().add(getLbRG());
 		//getContentPane().add(getTxRG());
-		
+		getContentPane().add(getJanelaConsulta());
 		dadosCliente = new JTable(dados, colunas);
         dadosCliente.setPreferredScrollableViewportSize(new Dimension(1200,400));//barra de rolagem
         dadosCliente.setFillsViewportHeight(true);
@@ -53,11 +56,39 @@ public class ConsultaClientePorRG extends JFrame{
 
 	}
 	
+	public JButton getJanelaConsulta() {
+		janelaConsulta = new JButton("Consulta");
+		janelaConsulta.setBounds(10, 1400, 100, 20);
+		janelaConsulta.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				consultaRG();
+			}
+		});
+		return janelaConsulta;
+	}
+	
+	private void consultaRG() {
+		JFrame consultaRg = new JFrame();
+		consultaRg.setLayout(null);
+		JLabel lbRG = new JLabel("RG");
+		lbRG.setBounds(10, 10, 100, 20);
+		JTextField txRG = new JTextField();
+		txRG.setBounds(30, 10, 100, 20);
+		JButton btConsulta = new JButton("Consulta");
+		btConsulta.setBounds(150, 10, 100, 20);
+		consultaRg.getContentPane().add(lbRG);
+		consultaRg.getContentPane().add(txRG);
+		consultaRg.getContentPane().add(btConsulta);
+		consultaRg.setSize(400, 200);
+		consultaRg.setVisible(true);
+	}
 	
 
 	
 	public static void main(String[] args) {
 		new ConsultaClientePorRG().setVisible(true);;
+		//new ConsultaClientePorRG().consultaRG();
 	}
 
 	
