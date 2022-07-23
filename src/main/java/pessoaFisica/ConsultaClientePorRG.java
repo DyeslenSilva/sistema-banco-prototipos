@@ -37,25 +37,25 @@ public class ConsultaClientePorRG extends JFrame{
 				"S","44-964561452","44-9522152224","tls588@gmail.com","Arquiteto","R$15336,00","R$15336,00"}
 	};
 	
-	public ConsultaClientePorRG() {
-		//consultaRG();
-		setLayout(new FlowLayout());
-		setSize(1900, 600);
-		setLocationRelativeTo(null);
-		setTitle("Consulta Cliente");
-		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//getContentPane().add(getLbRG());
-		//getContentPane().add(getTxRG());
-		getContentPane().add(getJanelaConsulta());
-		dadosCliente = new JTable(dados, colunas);
-        dadosCliente.setPreferredScrollableViewportSize(new Dimension(1200,400));//barra de rolagem
-        dadosCliente.setFillsViewportHeight(true);
-        
-        JScrollPane jScrollPane = new JScrollPane(dadosCliente);
-        add(jScrollPane);
-
-	}
-	
+//	public ConsultaClientePorRG() {
+//		//consultaRG();
+//		setLayout(new FlowLayout());
+//		setSize(1900, 600);
+//		setLocationRelativeTo(null);
+//		setTitle("Consulta Cliente");
+//		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		//getContentPane().add(getLbRG());
+//		//getContentPane().add(getTxRG());
+//		getContentPane().add(getJanelaConsulta());
+//		dadosCliente = new JTable(dados, colunas);
+//        dadosCliente.setPreferredScrollableViewportSize(new Dimension(1200,400));//barra de rolagem
+//        dadosCliente.setFillsViewportHeight(true);
+//        
+//        JScrollPane jScrollPane = new JScrollPane(dadosCliente);
+//        add(jScrollPane);
+//
+//	}
+//	
 	public JButton getJanelaConsulta() {
 		janelaConsulta = new JButton("Consulta");
 		janelaConsulta.setBounds(10, 1400, 100, 20);
@@ -69,7 +69,7 @@ public class ConsultaClientePorRG extends JFrame{
 	}
 	
 	private void consultaRG() {
-		JFrame consultaRg = new JFrame();
+		final JFrame consultaRg = new JFrame();
 		consultaRg.setLayout(null);
 		JLabel lbRG = new JLabel("RG");
 		lbRG.setBounds(10, 10, 100, 20);
@@ -80,6 +80,15 @@ public class ConsultaClientePorRG extends JFrame{
 		consultaRg.getContentPane().add(lbRG);
 		consultaRg.getContentPane().add(txRG);
 		consultaRg.getContentPane().add(btConsulta);
+		
+		btConsulta.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				consultaRg.dispose();
+				new TabelaPessoaFisica().setVisible(true);
+			}
+		});
+		
 		consultaRg.setSize(400, 200);
 		consultaRg.setVisible(true);
 	}
@@ -87,8 +96,8 @@ public class ConsultaClientePorRG extends JFrame{
 
 	
 	public static void main(String[] args) {
-		new ConsultaClientePorRG().setVisible(true);;
-		//new ConsultaClientePorRG().consultaRG();
+		//new ConsultaClientePorRG().setVisible(true);;
+		new ConsultaClientePorRG().consultaRG();
 	}
 
 	

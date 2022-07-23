@@ -28,25 +28,25 @@ public class ConsultaClientePorCPF extends JFrame{
 	private JTable dadosCliente;
 	private JButton consultaCliente;
 	
-	public ConsultaClientePorCPF() {
-		setLayout(new FlowLayout());
-		setSize(1900, 600);
-		setLocationRelativeTo(null);
-		setTitle("Consulta Cliente");
-		
-		getContentPane().add(getConsultaCliente());
-		
-		dadosCliente = new JTable(dados, colunas);
-        dadosCliente.setPreferredScrollableViewportSize(new Dimension(1200,400));//barra de rolagem
-        dadosCliente.setFillsViewportHeight(true);
-        
-        JScrollPane jScrollPane = new JScrollPane(dadosCliente);
-        add(jScrollPane);
-	}
-
-	
+//	public ConsultaClientePorCPF() {
+//		setLayout(new FlowLayout());
+//		setSize(1900, 600);
+//		setLocationRelativeTo(null);
+//		setTitle("Consulta Cliente");
+//		
+//		getContentPane().add(getConsultaCliente());
+//		
+//		dadosCliente = new JTable(dados, colunas);
+//        dadosCliente.setPreferredScrollableViewportSize(new Dimension(1200,400));//barra de rolagem
+//        dadosCliente.setFillsViewportHeight(true);
+//        
+//        JScrollPane jScrollPane = new JScrollPane(dadosCliente);
+//        add(jScrollPane);
+//	}
+//
+//	
 	private void consultaCPF() {
-		JFrame consultaCPF = new JFrame();
+		final JFrame consultaCPF = new JFrame();
 		consultaCPF.setLayout(null);
 		JLabel lbCPF = new JLabel("CPF");
 		lbCPF.setBounds(10, 10, 100, 20);
@@ -57,7 +57,14 @@ public class ConsultaClientePorCPF extends JFrame{
 		consultaCPF.getContentPane().add(lbCPF);
 		consultaCPF.getContentPane().add(txCPF);
 		consultaCPF.getContentPane().add(btConsulta);
-		
+		btConsulta.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				consultaCPF.dispose();
+				new TabelaPessoaFisica().setVisible(true);
+				
+			}
+		});
 		consultaCPF.setSize(400, 200);
 		consultaCPF.setVisible(true);
 	}
@@ -75,7 +82,7 @@ public class ConsultaClientePorCPF extends JFrame{
 		return consultaCliente;
 	}
 	public static void main(String[] args) {
-		new ConsultaClientePorCPF().setVisible(true);
+		new ConsultaClientePorCPF().consultaCPF();
 	}
 	
 }
