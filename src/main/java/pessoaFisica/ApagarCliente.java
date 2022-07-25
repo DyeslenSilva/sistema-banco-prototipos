@@ -1,5 +1,8 @@
 package pessoaFisica;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,7 +13,7 @@ public class ApagarCliente {
 	private JFrame apagarCliente;
 	private JLabel lbRG, lbCPF;
 	private JTextField txCPF, txRG;
-	private JButton btApagar;
+	private JButton btApagar, btFechar;
 	
 	public void setApagarCliente() {
 		apagarCliente = new JFrame();
@@ -20,6 +23,7 @@ public class ApagarCliente {
 		apagarCliente.getContentPane().add(getTxRG());
 		apagarCliente.getContentPane().add(getTxCPF());
 		apagarCliente.getContentPane().add(getBtApagar());
+		apagarCliente.getContentPane().add(getBtFechar());
 		apagarCliente.setLayout(null);
 		apagarCliente.setVisible(true);
 	}
@@ -53,6 +57,19 @@ public class ApagarCliente {
 		btApagar = new JButton("Apagar");
 		btApagar.setBounds(10, 80, 100, 20);
 		return btApagar;
+	}
+	
+	
+	public JButton getBtFechar() {
+		btFechar = new JButton("Fechar");
+		btFechar.setBounds(130, 80, 100, 20);
+		btFechar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				apagarCliente.dispose();
+			}
+		});
+		return btFechar;
 	}
 	
 	public static void main(String[] args) {
